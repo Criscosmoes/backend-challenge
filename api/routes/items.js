@@ -9,7 +9,7 @@ router.get("/items", async (req, res) => {
   try {
     const items = await pool.query("SELECT * FROM ITEMS");
 
-    res.send(items.rows);
+    res.status(200).send(items.rows);
   } catch (e) {
     console.log(e);
   }
