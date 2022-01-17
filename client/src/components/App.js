@@ -1,8 +1,13 @@
 import React from "react";
-import axios from "axios";
+
+// css
+import "../App.css";
+
+// components
+import NavBar from "./NavBar/NavBar";
 
 const App = () => {
-  const onButtonClick = async () => {
+  /* const onButtonClick = async () => {
     const res = await axios.post(
       "https://inventory-s.herokuapp.com/api/items",
       {
@@ -14,11 +19,11 @@ const App = () => {
     );
 
     console.log(res);
-  };
+  }; */
 
   return (
     <div>
-      <button onClick={onButtonClick}>Click here to add item</button>
+      <NavBar />
     </div>
   );
 };
