@@ -3,12 +3,15 @@ import axios from "axios";
 
 const App = () => {
   const onButtonClick = async () => {
-    const res = await axios.get("http://localhost:4000/api/items", {
-      item_name: "Buy Shoes",
-      item_price: "12.44",
-      item_count: 2,
-      category: "Shoes",
-    });
+    const res = await axios.post(
+      "https://inventory-s.herokuapp.com/api/items",
+      {
+        item_name: "Buy Shoes",
+        item_price: "12.44",
+        item_count: 2,
+        category: "Shoes",
+      }
+    );
 
     console.log(res);
   };
