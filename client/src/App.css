@@ -142,11 +142,11 @@ a {
 }
 html {
   font-size: 62.5%;
+  font-family: "Be Vietnam Pro", sans-serif;
 }
 body {
   font-size: 1.6rem;
   background: #f8f9fd;
-  font-family: "Be Vietnam Pro", sans-serif;
 }
 
 .app-container {

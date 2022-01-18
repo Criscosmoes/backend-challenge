@@ -30,16 +30,20 @@
 }
 
 .add-item {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
   padding: 7px;
-  border: 2px solid blue;
-  background: blue;
-  color: white;
-  border-radius: 10px;
+  border: 2px solid blue !important;
+  background: blue !important;
+  color: white !important;
+  border-radius: 8px !important;
   cursor: pointer;
   width: 150px;
+}
+
+.add-item h2 {
+  font-size: 11px;
 }
 
 .icon {

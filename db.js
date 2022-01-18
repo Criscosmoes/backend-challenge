@@ -11,6 +11,7 @@ client.connect();
 
 module.exports = client;
 
+// use in dev
 /* const Pool = require("pg").Pool;
 
 const pool = new Pool({

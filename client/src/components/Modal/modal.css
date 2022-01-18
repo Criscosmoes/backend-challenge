@@ -1,0 +1,20 @@
+.add-item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 400px;
+}
+
+.add-item-container input {
+  height: 25px;
+  width: 70%;
+  outline: none;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1.8rem;
+}
+
+.disabled {
+  background: gray !important;
+  border: 2px solid gray !important;
+}

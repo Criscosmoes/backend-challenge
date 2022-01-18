@@ -36,4 +36,19 @@ router.post("/items", [checkPayload], async (req, res) => {
 
 // update item
 
+// search by term
+router.get("/items/:term", async (req, res) => {
+  try {
+    const { term } = req.params;
+
+    const users = await pool.query(
+      `SELECT item_name as item, item_price as price, item_count as count, category FROM items WHERE item_name ILIKE '%${term}%' LIMIT 20`
+    );
+
+    res.status(200).send(users);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

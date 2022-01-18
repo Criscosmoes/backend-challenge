@@ -4,11 +4,11 @@ import "./dashboard.css";
 import SearchBar from "../SearchBar/SearchBar";
 import Items from "../Items/Items";
 
-const Dashboard = () => {
+const Dashboard = ({ items, headers, fetchItems, setItems }) => {
   return (
     <div className="main-container">
-      <SearchBar />
-      <Items />
+      <SearchBar items={items} fetchItems={fetchItems} setItems={setItems} />
+      <Items items={items} headers={headers} />
     </div>
   );
 };
