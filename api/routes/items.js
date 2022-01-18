@@ -7,7 +7,9 @@ const { checkPayload } = require("../middlewares/items/checkPayload");
 // get all current items
 router.get("/items", async (req, res) => {
   try {
-    const items = await pool.query("SELECT * FROM ITEMS");
+    const items = await pool.query(
+      `select item_name as item, item_price as price, item_count as count, category from items`
+    );
 
     res.status(200).send(items.rows);
   } catch (e) {
