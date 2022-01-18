@@ -1,4 +1,4 @@
-/* const { Client } = require("pg");
+const { Client } = require("pg");
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -9,9 +9,9 @@ const client = new Client({
 
 client.connect();
 
-module.exports = client; */
+module.exports = client;
 
-const Pool = require("pg").Pool;
+/* const Pool = require("pg").Pool;
 
 const pool = new Pool({
   user: "postgres",
@@ -21,4 +21,4 @@ const pool = new Pool({
   database: "Inventory",
 });
 
-module.exports = pool;
+module.exports = pool; */
