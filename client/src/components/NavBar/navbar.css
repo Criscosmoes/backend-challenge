@@ -4,6 +4,10 @@
   align-items: center;
   list-style-type: none;
   height: 60px;
+  background: white;
+  font-size: 2.2rem;
+  border-bottom: 1px solid gray;
+  width: 100%;
 }
 
 .navigation-bar li {

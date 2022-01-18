@@ -3,7 +3,7 @@ import "./navbar.css";
 
 const NavBar = () => {
   return (
-    <ul class="navigation-bar">
+    <ul className="navigation-bar">
       <li>Shopify Inventory</li>
     </ul>
   );

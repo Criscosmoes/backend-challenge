@@ -5,6 +5,7 @@ import "../App.css";
 
 // components
 import NavBar from "./NavBar/NavBar";
+import Dashboard from "./Dashboard/Dashboard";
 
 const App = () => {
   /* const onButtonClick = async () => {
@@ -22,8 +23,9 @@ const App = () => {
   }; */
 
   return (
-    <div>
+    <div className="app-container">
       <NavBar />
+      <Dashboard />
     </div>
   );
 };
