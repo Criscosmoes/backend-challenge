@@ -38,8 +38,8 @@
   background: blue;
   color: white;
   border-radius: 10px;
-  /* width: 60%; */
   cursor: pointer;
+  width: 150px;
 }
 
 .icon {
@@ -79,7 +79,7 @@ button {
 
 @media (max-width: 600px) {
   .form-container {
-    width: 70%;
+    width: 80%;
   }
 
   .searchbar-container {

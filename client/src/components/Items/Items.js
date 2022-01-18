@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./items.css";
 import axios from "axios";
 
+import { FaEllipsisV } from "react-icons/fa";
+
 const Items = () => {
   // going to receive a list to render
 
@@ -30,7 +32,10 @@ const Items = () => {
         <td>{cur.item}</td>
         <td>{cur.price}</td>
         <td>{cur.count}</td>
-        <td>{cur.category}</td>
+        <td className="last-column">
+          <h2>{cur.category}</h2>
+          <FaEllipsisV className="icon filter" />
+        </td>
       </tr>
     );
   });
