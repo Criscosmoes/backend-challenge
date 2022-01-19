@@ -1,0 +1,35 @@
+.css-8pv4za-MuiList-root {
+  background-color: unset !important;
+}
+
+.button {
+  background: black;
+  color: white;
+  margin: 3% 0%;
+  cursor: pointer;
+}
+
+.css-9l5vo-MuiCollapse-wrapperInner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.css-cvhtoe-MuiButtonBase-root-MuiListItemButton-root {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.main-list {
+  margin-right: 4%;
+}
+
+.css-8pv4za-MuiList-root {
+  list-style: unset !important;
+  margin-right: 5%;
+  padding-top: unset !important;
+  padding-bottom: unset !important;
+  width: unset !important;
+}

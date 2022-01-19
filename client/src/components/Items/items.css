@@ -10,7 +10,7 @@ td {
 
 th,
 td {
-  padding: 11px;
+  padding: 10px;
   text-align: left;
 }
 
@@ -31,4 +31,10 @@ tr:nth-child(odd) {
 
 .filter {
   cursor: pointer;
+}
+
+.select-container {
+  width: 20px;
+  outline: none;
+  font-family: "Be Vietnam Pro", sans-serif;
 }

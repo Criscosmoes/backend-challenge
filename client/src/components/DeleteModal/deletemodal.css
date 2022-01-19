@@ -1,0 +1,14 @@
+.delete-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-container > * {
+  margin: 4%;
+}
+
+h3 {
+  font-weight: bolder;
+}

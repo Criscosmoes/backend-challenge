@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./items.css";
+import ListIcon from "../../components/ListIcon/ListIcon";
 
-import { FaEllipsisV } from "react-icons/fa";
-
-const Items = ({ items, headers }) => {
+const Items = ({ items, headers, fetchItems }) => {
   // going to receive a list to render
 
   const renderedHeaders = headers.map((cur) => {
@@ -18,7 +17,7 @@ const Items = ({ items, headers }) => {
         <td>{cur.count}</td>
         <td className="last-column">
           <h2>{cur.category}</h2>
-          <FaEllipsisV className="icon filter" />
+          <ListIcon item={cur} fetchItems={fetchItems} />
         </td>
       </tr>
     );

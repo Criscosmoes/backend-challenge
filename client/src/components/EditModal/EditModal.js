@@ -4,8 +4,6 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import axios from "axios";
-import { RiAddFill } from "react-icons/ri";
-import "./modal.css";
 
 const style = {
   position: "absolute",
@@ -19,45 +17,57 @@ const style = {
   p: 4,
 };
 
-export default function TransitionsModal({ items, fetchItems, text }) {
+export default function TransitionsModal({ item, handleClick, fetchItems }) {
+  console.log(item);
   const [open, setOpen] = React.useState(false);
   const [input, setInput] = React.useState({
-    item_id: items.id,
-    item_name: "",
-    item_price: "",
-    item_count: "",
-    category: "",
+    item_id: item.id,
+    item_name: item.item,
+    item_price: item.price,
+    item_count: item.count,
+    category: item.category,
   });
   const [disabled, setDisabled] = React.useState(false);
 
-  const addItem = async (e) => {
+  const onInputChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    // add new item
-    await axios.post("http://localhost:4000/api/items", {
-      ...input,
-      item_count: parseInt(input.item_count),
-    });
+    try {
+      // udpate item in db
+      await axios.put("http://localhost:4000/api/items", {
+        ...input,
+        item_count: parseInt(input.item_count),
+      });
 
-    // request new items
-    fetchItems();
+      // request new items
+      fetchItems();
 
-    setInput({ item_name: "", item_price: "", item_count: "", category: "" });
-    setDisabled(true);
-    handleClose();
+      setDisabled(true);
+      handleClose();
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  const onInputChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
+  const handleOpen = () => {
+    setOpen(true);
+    setDisabled(false);
   };
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    handleClick(!true);
+  };
 
   return (
     <div>
-      <button className="add-item" onClick={handleOpen}>
-        <h2>{text}</h2>
-        <RiAddFill className="icon" />
+      <button className="button" onClick={handleOpen}>
+        <h2>Edit</h2>
       </button>
 
       <Modal
@@ -73,7 +83,7 @@ export default function TransitionsModal({ items, fetchItems, text }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <form onSubmit={addItem} className="add-item-container">
+            <form onSubmit={onSubmit} className="add-item-container">
               <label for="item">Item name:</label>
               <br></br>
               <input
@@ -111,6 +121,7 @@ export default function TransitionsModal({ items, fetchItems, text }) {
                 value={input.category}
                 type="text"
                 name="category"
+                required
               />
               <br></br>
               <button

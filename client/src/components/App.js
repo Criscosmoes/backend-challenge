@@ -18,16 +18,16 @@ const App = () => {
     let tableHeaders = [];
 
     for (const key in firstItem) {
-      tableHeaders.push(key);
+      if (key != "id") {
+        tableHeaders.push(key);
+      }
     }
 
     setHeaders(tableHeaders);
   }
 
   const fetchItems = async () => {
-    const response = await axios.get(
-      "https://inventory-s.herokuapp.com/api/items"
-    );
+    const response = await axios.get("http://localhost:4000/api/items");
 
     setItems(response.data);
     rendersHeaders(response.data);

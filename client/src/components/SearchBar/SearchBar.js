@@ -4,7 +4,6 @@ import axios from "axios";
 
 // icons
 import { BiFilter } from "react-icons/bi";
-import { RiAddFill } from "react-icons/ri";
 
 // components
 import Modal from "../../components/Modal/Modal";
@@ -12,16 +11,12 @@ import Modal from "../../components/Modal/Modal";
 const SearchBar = ({ items, fetchItems, setItems }) => {
   const fetchFilteredItems = async (term) => {
     if (!term) {
-      const response = await axios.get(
-        `https://inventory-s.herokuapp.com/api/items`
-      );
+      const response = await axios.get(`http://localhost:4000/api/items`);
       setItems(response.data);
       return;
     }
 
-    const response = await axios.get(
-      `https://inventory-s.herokuapp.com/api/items/${term}`
-    );
+    const response = await axios.get(`http://localhost:4000/api/items/${term}`);
 
     setItems(response.data.rows);
   };
@@ -39,7 +34,7 @@ const SearchBar = ({ items, fetchItems, setItems }) => {
         <button>
           <BiFilter className="filter-icon" />
         </button>
-        <Modal items={items} fetchItems={fetchItems} />
+        <Modal items={items} fetchItems={fetchItems} text={"Add new Item"} />
       </div>
     </ul>
   );

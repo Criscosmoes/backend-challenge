@@ -8,7 +8,7 @@ const Dashboard = ({ items, headers, fetchItems, setItems }) => {
   return (
     <div className="main-container">
       <SearchBar items={items} fetchItems={fetchItems} setItems={setItems} />
-      <Items items={items} headers={headers} />
+      <Items items={items} headers={headers} fetchItems={fetchItems} />
     </div>
   );
 };
