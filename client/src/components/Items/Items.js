@@ -13,7 +13,7 @@ const Items = ({ items, headers, fetchItems }) => {
     return (
       <tr>
         <td>{cur.item}</td>
-        <td>{cur.price}</td>
+        <td>$ {cur.price}</td>
         <td>{cur.count}</td>
         <td className="last-column">
           <h2>{cur.category}</h2>

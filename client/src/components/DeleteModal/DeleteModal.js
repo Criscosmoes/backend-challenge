@@ -18,7 +18,6 @@ const style = {
 };
 
 export default function TransitionsModal({ item, handleClick, fetchItems }) {
-  console.log(item);
   const [open, setOpen] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
 
@@ -27,7 +26,7 @@ export default function TransitionsModal({ item, handleClick, fetchItems }) {
 
     try {
       // delete item in db
-      await axios.delete("http://localhost:4000/api/items", {
+      await axios.delete("https://inventory-s.herokuapp.com/api/items", {
         data: { item_id: item.id },
       });
 

@@ -1,0 +1,24 @@
+button {
+  cursor: pointer;
+}
+
+.label-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 40%;
+}
+
+.label-container > * {
+  margin: 8%;
+}
+
+select {
+  width: 50%;
+  outline: none;
+  height: 30px;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1.6rem;
+  border: 1px solid black;
+}

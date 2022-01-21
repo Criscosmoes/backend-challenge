@@ -1,6 +1,6 @@
 const checkPayload = async (req, res, next) => {
   try {
-    const { item_name, item_price, item_count, category } = req.body;
+    const { item_id, item_name, item_price, item_count, category } = req.body;
 
     if (!item_name || !item_price || !category || item_count < 0) {
       return res

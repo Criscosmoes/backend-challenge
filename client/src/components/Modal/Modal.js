@@ -19,7 +19,12 @@ const style = {
   p: 4,
 };
 
-export default function TransitionsModal({ items, fetchItems, text }) {
+export default function TransitionsModal({
+  items,
+  fetchItems,
+  text,
+  setUserInput,
+}) {
   const [open, setOpen] = React.useState(false);
   const [input, setInput] = React.useState({
     item_id: items.id,
@@ -28,25 +33,29 @@ export default function TransitionsModal({ items, fetchItems, text }) {
     item_count: "",
     category: "",
   });
-  const [disabled, setDisabled] = React.useState(false);
 
   const addItem = async (e) => {
     e.preventDefault();
 
     // add new item
-    await axios.post("http://localhost:4000/api/items", {
+    await axios.post("https://inventory-s.herokuapp.com/api/items", {
       ...input,
-      item_count: parseInt(input.item_count),
+      item_name: capitalizeFirstLetter(input.item_name),
+      category: capitalizeFirstLetter(input.category),
+      item_price: input.item_price.toString(),
     });
 
     // request new items
     fetchItems();
 
     setInput({ item_name: "", item_price: "", item_count: "", category: "" });
-    setDisabled(true);
     handleClose();
+    setUserInput("");
   };
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   const onInputChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -89,9 +98,11 @@ export default function TransitionsModal({ items, fetchItems, text }) {
               <input
                 onChange={onInputChange}
                 value={input.item_price}
-                type="text"
+                type="number"
                 name="item_price"
                 required
+                min="1"
+                step="0.01"
               />
               <br></br>
               <label for="item_count">Count:</label>
@@ -99,9 +110,10 @@ export default function TransitionsModal({ items, fetchItems, text }) {
               <input
                 onChange={onInputChange}
                 value={input.item_count}
-                type="text"
+                type="number"
                 name="item_count"
                 required
+                min="1"
               />
               <br></br>
               <label for="category">Category:</label>
@@ -113,11 +125,7 @@ export default function TransitionsModal({ items, fetchItems, text }) {
                 name="category"
               />
               <br></br>
-              <button
-                disabled={disabled}
-                type="submit"
-                className={`add-item ${disabled ? "disabled" : ""}`}
-              >
+              <button type="submit" className={`add-item`}>
                 Submit
               </button>
             </form>

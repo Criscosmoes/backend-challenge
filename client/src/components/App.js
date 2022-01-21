@@ -27,7 +27,9 @@ const App = () => {
   }
 
   const fetchItems = async () => {
-    const response = await axios.get("http://localhost:4000/api/items");
+    const response = await axios.get(
+      "https://inventory-s.herokuapp.com/api/items"
+    );
 
     setItems(response.data);
     rendersHeaders(response.data);

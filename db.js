@@ -22,4 +22,5 @@ const pool = new Pool({
   database: "Inventory",
 });
 
-module.exports = pool; */
+module.exports = pool;
+ */

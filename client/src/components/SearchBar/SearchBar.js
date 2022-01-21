@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./searchbar.css";
 import axios from "axios";
 
-// icons
-import { BiFilter } from "react-icons/bi";
+import FilterModal from "../../components/FilterModal/FilterModal";
 
 // components
 import Modal from "../../components/Modal/Modal";
 
 const SearchBar = ({ items, fetchItems, setItems }) => {
+  const [userInput, setUserInput] = useState("");
+
   const fetchFilteredItems = async (term) => {
+    setUserInput(term);
     if (!term) {
-      const response = await axios.get(`http://localhost:4000/api/items`);
+      const response = await axios.get(
+        `https://inventory-s.herokuapp.com/api/items`
+      );
       setItems(response.data);
       return;
     }
 
-    const response = await axios.get(`http://localhost:4000/api/items/${term}`);
+    const response = await axios.get(
+      `https://inventory-s.herokuapp.com/api/items/${term}`
+    );
 
     setItems(response.data.rows);
   };
@@ -28,13 +34,22 @@ const SearchBar = ({ items, fetchItems, setItems }) => {
           onChange={(e) => fetchFilteredItems(e.target.value)}
           type="text"
           placeholder="Search Inventory..."
+          value={userInput}
         ></input>
       </form>
       <div className="icon-container">
-        <button>
-          <BiFilter className="filter-icon" />
-        </button>
-        <Modal items={items} fetchItems={fetchItems} text={"Add new Item"} />
+        <FilterModal
+          items={[]}
+          fetchItems={fetchItems}
+          setItems={setItems}
+          setUserInput={setUserInput}
+        />
+        <Modal
+          items={items}
+          fetchItems={fetchItems}
+          text={"Add new Item"}
+          setUserInput={setUserInput}
+        />
       </div>
     </ul>
   );

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -18,15 +18,16 @@ const style = {
 };
 
 export default function TransitionsModal({ item, handleClick, fetchItems }) {
-  console.log(item);
-  const [open, setOpen] = React.useState(false);
-  const [input, setInput] = React.useState({
+  const currentUser = {
     item_id: item.id,
     item_name: item.item,
     item_price: item.price,
     item_count: item.count,
     category: item.category,
-  });
+  };
+
+  const [open, setOpen] = React.useState(false);
+  const [input, setInput] = React.useState(currentUser);
   const [disabled, setDisabled] = React.useState(false);
 
   const onInputChange = (e) => {
@@ -41,9 +42,8 @@ export default function TransitionsModal({ item, handleClick, fetchItems }) {
 
     try {
       // udpate item in db
-      await axios.put("http://localhost:4000/api/items", {
+      await axios.put("https://inventory-s.herokuapp.com/api/items", {
         ...input,
-        item_count: parseInt(input.item_count),
       });
 
       // request new items
@@ -109,9 +109,10 @@ export default function TransitionsModal({ item, handleClick, fetchItems }) {
               <input
                 onChange={onInputChange}
                 value={input.item_count}
-                type="text"
+                type="number"
                 name="item_count"
                 required
+                min="1"
               />
               <br></br>
               <label for="category">Category:</label>
